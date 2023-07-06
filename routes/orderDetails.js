@@ -1,18 +1,17 @@
 const express = require('express');
-const data = require('../allOrders.json');
+const Order = require('../Schema/Order');
 
 const router = express.Router();
-// const id = '2';
 router.get('/:id', (req, res) => {
   let result = 'null';
-  data.map((e) => {
-    if (e.id === Number.parseInt(req.params.id, 10)) {
-      result = e;
-      return e;
+  Order.find({ id: req.params.id }).then((data) => {
+    if (data.length !== 0) {
+      result = data;
+      res.send(result);
+    } else {
+      res.send(result);
     }
-    return 'null';
   });
-  res.send(result);
 });
 
 module.exports = router;
