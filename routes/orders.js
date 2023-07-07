@@ -1,10 +1,11 @@
 const express = require('express');
 const Order = require('../Schema/Order');
 const Menu = require('../Schema/Menu');
+const fetchUser = require('./fetchUser');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', fetchUser, (req, res) => {
   Order.find({ status: 'pending' }).then((pendingOrders) => {
     if (pendingOrders.length !== 0) {
       res.send(pendingOrders);
@@ -14,15 +15,15 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
+router.post('/', fetchUser, (req, res) => {
   const prices = [];
   Menu.find({}).then(async () => {
     const menu = req.body.orderedItems;
     const ID = Math.floor(Math.random() * 80000000);
     req.body.id = ID;
-
-    // eslint-disable-next-line max-len
-    const promises = menu.map((item) => Menu.find({ name: item }).then((p) => prices.push(p[0].price)));
+    const promises = menu.map(
+      (item) => Menu.find({ name: item }).then((p) => prices.push(p[0].price)),
+    );
 
     await Promise.all(promises);
     req.body.price = prices;

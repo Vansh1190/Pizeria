@@ -1,8 +1,9 @@
 const express = require('express');
 const Order = require('../Schema/Order');
+const fetchUser = require('./fetchUser');
 
 const router = express.Router();
-router.get('/:id', (req, res) => {
+router.get('/:id', fetchUser, (req, res) => {
   let result = 'null';
   Order.find({ id: req.params.id }).then((data) => {
     if (data.length !== 0) {

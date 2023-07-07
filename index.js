@@ -17,9 +17,10 @@ app.get('/', (req, res) => {
 app.use('/api/pizza', require('./routes/addPizza'));
 app.use('/api/orders', require('./routes/orders'));
 app.use('/api/order', require('./routes/orderDetails'));
+app.use('/api/auth', require('./routes/Auth'));
 
 app.listen(port, () => {
   // console.log(jsonData);
   // fs.writeFileSync('allOrder.json', JSON.stringify(jsonData));
-  // console.log(`Server is running on on port http://localhost:${port}`);
+  console.log(`Server is running on on port http://localhost:${port}`);
 });
