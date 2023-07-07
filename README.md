@@ -1,4 +1,4 @@
-> # Routes for Pizeria v2.1
+> # Routes for Pizeria v2.1 [![DeepScan grade](https://deepscan.io/api/teams/21623/projects/25015/branches/776351/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=21623&pid=25015&bid=776351)
 > https://pizeriabackend.onrender.com
 > ###  I used JWT token for verify whether the user is Signed In or not.
 
