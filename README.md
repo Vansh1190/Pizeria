@@ -21,7 +21,7 @@
 This returns an jwt token.
 ``` 
 
-## for adding new Pizza item in Menu.
+## For adding new Pizza item in Menu.
 * post request -https://pizeriabackend.onrender.com/api/pizza/menu/add with 
 ```json
  {
@@ -39,7 +39,7 @@ This returns an jwt token.
 }
 ```
 
-## for giving Order.
+## For giving Order.
 * post request -https://pizeriabackend.onrender.com/api/orders/ with
 Inside Body -
 ```json
@@ -61,12 +61,12 @@ along with Header
 token: {token}(issued to user while signup)
 ```
 
-## for track a specific order
+## For track a specific order
 * get req -> https://pizeriabackend.onrender.com/api/order/[id]
 along with Header
 ```
 token: {token}(issued to user while signup)
 ```
 
-## for seeing the Menu
+## For seeing the Menu
 * get req -> https://pizeriabackend.onrender.com/api/pizza/menu
