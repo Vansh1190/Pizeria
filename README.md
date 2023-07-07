@@ -1,37 +1,72 @@
-Backend
-=======
+> # Routes for Pizeria v2.1
+> https://pizeriabackend.onrender.com
+> ###  I used JWT token for verify whether the user is Signed In or not.
 
-Prerequisites
--------------
+## SignUp
+* post request -https://pizeriabackend.onrender.com/api/auth/signup with 
+```json
+  {
+        "userName": "Vansh",
+        "password": "Vansh1190"
+}
+```
 
-* [Git](http://git-scm.com/)
-* [MySQL](https://www.mysql.com/)
+## SignIn
+* post request -https://pizeriabackend.onrender.com/api/auth/signin with 
+```json
+  {
+        "userName": "Vansh",
+        "password": "Vansh1190"
+}
+This returns an jwt token.
+``` 
 
-Option one
-* [nodejs](https://nodejs.org/en/)
-* nodejs framework of your choice
+## for adding new Pizza item in Menu.
+* post request -https://pizeriabackend.onrender.com/api/pizza/menu/add with 
+```json
+ {
+        "name": "Farm House",
+       "ingredients": [
+      "mozzarella",
+      "oregano",
+      "paneer",
+      "cheese",
+      "onion",
+      "capsicum"
+    ],
+        "status": "pending",
+        "price": 30
+}
+```
 
-Option two
-* [Ruby](https://www.ruby-lang.org)
-* Ruby framework of your choice
+## for giving Order.
+* post request -https://pizeriabackend.onrender.com/api/orders/ with
+Inside Body -
+```json
+{
+        "name": "Sumit",
+        "orderedItems": ["Pizza Bianca", "Romana"],
+        "status":"pending"
+}
+```
+along with Header
+```
+token: {token}(issued to user while signup)
+```
 
+## For seeing all the orders that are pending (for staff)
+* get req -> https://pizeriabackend.onrender.com/api/orders/ with
+along with Header
+```
+token: {token}(issued to user while signup)
+```
 
-* You can use any additional libraries you want.
+## for track a specific order
+* get req -> https://pizeriabackend.onrender.com/api/order/[id]
+along with Header
+```
+token: {token}(issued to user while signup)
+```
 
-Project description
--------------------
-
-**Pizzeria**
-
-This application serves the purpose of exposing a JSON API to be consumed by a frontend client for ordering pizza.
-
-The following entities should be created (including proper relations):
-
-* *pizza* - has a name and price (e.g. Margherita $5, Pepperoni $6, ...)
-* *order* - has items
-* *order item* - has a pizza and quantity
-
-The following endpoints should return a JSON response:
-* `/api/orders` (list of orders)
-* `/api/orders/:id` (details of an individual order)
-* `/api/pizzas` (list of pizzas; see './backend/example-pizzas.json')
+## for seeing the Menu
+* get req -> https://pizeriabackend.onrender.com/api/pizza/menu
