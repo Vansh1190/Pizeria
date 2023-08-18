@@ -3,6 +3,7 @@ require('dotenv').config();
 
 const fetchUser = async (req, res, next) => {
   let LoggedIn = false;
+  console.log(req.headers)
   const { token } = req.headers;
   LoggedIn = jwt.verify(token, process.env.Secret, (err, response) => {
     if (!response) {
